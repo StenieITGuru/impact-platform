@@ -56,3 +56,7 @@ ROLES = {
         "permissions": ["organizations:read_own", "projects:read"],
     },
 }
+
+
+# Roles an organization admin may assign. platform_admin is never assignable through the API.
+ASSIGNABLE_ROLES = [name for name in ROLES if name != "platform_admin"]

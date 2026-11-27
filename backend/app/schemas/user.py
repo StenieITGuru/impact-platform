@@ -23,3 +23,23 @@ class UserRead(BaseModel):
 class Token(BaseModel):
     access_token: str
     token_type: str = "bearer"
+
+
+class AdminUserCreate(BaseModel):
+    email: EmailStr
+    full_name: str = Field(min_length=2, max_length=200)
+    password: str = Field(min_length=10, max_length=128)
+    role: str
+
+
+class UserUpdate(BaseModel):
+    full_name: str | None = Field(default=None, min_length=2, max_length=200)
+    is_active: bool | None = None
+
+
+class RoleAssign(BaseModel):
+    role: str
+
+
+class UserDetail(UserRead):
+    roles: list[str] = []
