@@ -14,3 +14,7 @@ def get_database_url() -> str:
     if url.startswith("postgresql://"):
         url = url.replace("postgresql://", "postgresql+psycopg://", 1)
     return url
+
+
+def get_secret_key() -> str:
+    return os.environ["SECRET_KEY"]

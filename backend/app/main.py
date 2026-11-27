@@ -1,11 +1,12 @@
 from fastapi import FastAPI
 from sqlalchemy import text
 
-from app.api import organizations
+from app.api import auth, organizations
 from app.core.database import engine
 
 app = FastAPI(title="ImpactArc IPIS API", version="0.1.0")
 
+app.include_router(auth.router)
 app.include_router(organizations.router)
 
 
